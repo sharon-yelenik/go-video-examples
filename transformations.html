@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <heading>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 24px;
+      }
+
+      h1 {
+        text-align: center;
+        display: inline-block;
+        font-size: 24px;
+        margin-bottom: -30px;
+      }
+      h3 {
+        margin-top:50px;
+      }
+      div {
+        display:flex;
+        flex-direction:column;
+        text-align:center;
+        display: inline-block;
+        justify-content:center;
+      }
+      a {
+        text-decoration: none;
+        color: red;
+        text-align: center;
+        border: 1px solid red;
+      }
+    </style>
+  </heading>
+  <body>
+    <div>
+      <h1>{{.PageTitle}}</h1>
+
+          {{range .Transformations}}
+              {{if .Done}}
+                  <h3>{{.Description}}</h3>
+                  <p class="done">
+                    <video width="450" height="300" controls>
+                      <source src="{{.Asset}}">
+                    </video>
+                  </p>
+                  <a href="{{.Link}}">{{.Text}}</a>
+              {{else}}
+                  <h3>{{.Description}}:</h3>
+                  <p>
+                    <video width="320" height="240" controls>
+                      <source src="{{.Asset}}">
+                    </video>
+                  </p>
+                  <a href="{{.Link}}">{{.Text}}</a>
+              {{end}}
+          {{end}}
+    </div>
+  </body>
+</html>
